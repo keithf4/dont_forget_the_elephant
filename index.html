@@ -46,7 +46,7 @@
                     </p>
                     <p>
                     Senior Database Engineer @ <a href="https://www.crunchydata.com/" target="_blank">Crunchy Data Solutions, Inc</a><br/>
-                        (<a href="https://github.com/keithf4/pg_partman" target="_blank">pg_partman</a>, <a href="https://github.com/omniti-labs/pg_extractor" target="_blank">pg_extractor</a>, <a href="https://github.com/omniti-labs/mimeo" target="_blank">mimeo</a>)
+                    (<a href="https://github.com/keithf4/pg_partman" target="_blank">pg_partman</a>, <a href="https://github.com/CrunchyData/pgmonitor" target="_blank">pgmonitor</a>, <a href="https://github.com/omniti-labs/pg_extractor" target="_blank">pg_extractor</a>, <a href="https://github.com/omniti-labs/mimeo" target="_blank">mimeo</a>)
                     </p>
                     <p>
                     <br/>
@@ -79,6 +79,7 @@
                 <section data-background="css/theme/crunchy_white_bg.png">
                     <h2>What is PostgreSQL?</h2>
                     <p>
+                    <div id="li30">
                     <ul>
                         <li>Open Source RDBMS</a>
                         <li>Started at UC Berkley 1986, open sourced in 1996</li>
@@ -86,8 +87,7 @@
                         <li>Follows SQL Standard very closely</li>
                         <li>Yearly major version releases</li>
                         <ul>
-                            <li>Used to use 3 number version before v10 (x.x.x)</li>
-                            <li>Minor (x.x) patch releases quarterly at minimum</li>
+                            <li>Minor patch releases quarterly at minimum</li>
                             <li>Generally patch all supported versions at one time</li>
                         </ul>
                         <li>Third-party Plugin Support</li>
@@ -99,8 +99,13 @@
                             <li>Extensions</li>
                             <li>Background Workers</li>
                         </ul>
-                        <li><a href="http://www.postgresql.org/list/" target="_blank">Mailing Lists</a>, <a href="http://www.postgresql.org/community/irc/" target="_blank">IRC</a>, <a href="http://wiki.postgresql.org" target="_blank">Wiki</a>, <a href="http://planet.postgresql.org" target="_blank">planet.postgresql.org</a>, <a href="https://wiki.postgresql.org/wiki/Events" target="_blank">Conferences & User Groups</a></li>
+                        <li>United States PostgreSQL Association (PgUS) - <a href="https://postgresql.us" target="_blank">https://postgresql.us</a></li>
+                        <ul>
+                            <li>Booth here at this conference!</li>
+                        </ul>
+                        <li><a href="http://www.postgresql.org/list/" target="_blank">Mailing Lists</a>, <a href="https://postgres-slack.herokuapp.com/" target="_blank">Slack</a>, <a href="http://www.postgresql.org/community/irc/" target="_blank">IRC</a>, <a href="http://wiki.postgresql.org" target="_blank">Wiki</a>, <a href="http://planet.postgresql.org" target="_blank">planet.postgresql.org</a>, <a href="https://wiki.postgresql.org/wiki/Events" target="_blank">Conferences & User Groups</a></li>
                     </ul>
+                    </div>
                 </section>
 
                 <section data-background="css/theme/crunchy_white_bg.png">
@@ -571,7 +576,7 @@ SELECT sum(n) FROM t;
                     <section>
                         <h2>pg_upgrade</h2>
                         <ul>
-                            <li>Previously, all major version (x.x) upgrades required a full dump &amp; restore</li>
+                            <li>Previously, all major version upgrades required a full dump &amp; restore</li>
                             <li>Can either copy existing files to new data directory or can use hard links to reuse old files</li>
                             <li>Link method can allow very quick upgrade of large databases (ex: 1.2TB in &lt; 2min; does not include stats update) </li>
                             <li>Minimum version to pg_upgrade straight to latest release: 8.4.7</li>
@@ -618,7 +623,7 @@ SELECT sum(n) FROM t;
                             <li>SQL/MED (Management of External Data) part of SQL Standard</li>
                             <li>Connect to remote databases/filesystems/services as if they were local tables inside PostgreSQL</li>
                             <li>Oracle, MySQL, SQL Server, SQLite, MongoDB, Redis, CSV Files, Twitter, Blackhole, etc</li>
-                            <li>Joins & conditions pushed to remote system</li>
+                            <li>Joins &amp; conditions pushed to remote system</li>
                             <li>Still performance issues joining local tables w/ remote</li>
                             <li>Ease the migration to PostgreSQL from different databases</li>
                         </ul>
@@ -633,7 +638,7 @@ SELECT sum(n) FROM t;
                                 <li>Controlled upgrades & downgrades</li>
                             </ul>
                             <li>All contrib modules are now extensions</li>
-                            <li>Examples: <a href="http://postgis.net/" target="_blank">PostGIS</a>, <a href="http://reorg.github.io/pg_repack/" target="_blank">pg_repack</a>, <a href="https://github.com/keithf4/pg_partman" target="_blank">pg_partman</a></li> 
+                            <li>Examples: <a href="http://postgis.net/" target="_blank">PostGIS</a>, <a href="https://github.com/keithf4/pg_partman" target="_blank">pg_partman</a>, <a href="http://reorg.github.io/pg_repack/" target="_blank">pg_repack</a> </li> 
                         </ul>
                     </section>
                     <section>
@@ -850,7 +855,7 @@ ORDER BY lower(cars.price_range);
                         <h2>Cascading Replication</h2>
                         <ul>
                             <li>Database can be a streaming replica of another replica</li>
-                            <li>Every streaming replica off of a primary causes additional load for reading its WAL stream</li>
+                            <li>Every streaming replica off of a primary causes additional load (system &amp; network) for reading its WAL stream</li>
                             <li>Distribute replica load among several systems in large, multi-cluster setups</li>
                         </ul>
                     </section>
@@ -1052,6 +1057,7 @@ Execution time: 2.199 ms
                             <li>Multiple policies per table (Results are OR'ed)</li>
                             <li>BYPASSRLS/NOBYPASSRLS - new role property to allow individual roles to bypass RLS</li>
                             <li>Row level security shows up in the \d results</li>
+                            <li>Much better support in more recent versions</li>
                         </ul>
                     </section>
 
@@ -1072,8 +1078,8 @@ Execution time: 2.199 ms
                         <h2>Additional 9.5 Features</h2>
                         <ul>
                             <li>Sorting Speed Improvements (Abbreviated Keys)</li>
-                            <li>checkpoint_segments replaced by min_wal_size &amp; max_wal_size</li>
-                            <li>pg_rewind - no longer have to rebuild failed primary from scratch</li>
+                            <li>checkpoint_segments replaced by <a href="https://www.postgresql.org/docs/9.5/runtime-config-wal.html#RUNTIME-CONFIG-WAL-CHECKPOINTS" target="_blank">min_wal_size &amp; max_wal_size</a></li>
+                            <li><a href="https://www.postgresql.org/docs/9.5/app-pgrewind.html" target="_blank">pg_rewind</a> - no longer have to rebuild failed primary from scratch</li>
                             <li>Add IF NOT EXISTS clause to CREATE INDEX, CREATE TABLE AS, CREATE SEQUENCE, and CREATE MATERIALIZED VIEW</li>
                             <li>Additional GROUP BY options (GROUPING SETS, CUBE, ROLLUP)</li>
                             <li>JSONB improvements</li>
@@ -1093,7 +1099,7 @@ Execution time: 2.199 ms
                 <section data-background="css/theme/crunchy_white_bg.png">
                     <section>
                         <h1>9.6 Features</h1>
-                        Released Jan 2016 - EOL Nov 2021<br />
+                        Released Sept 2016 - EOL Nov 2021<br />
                         Current Version 9.6.15
                     </section>
 
@@ -1137,7 +1143,7 @@ Execution time: 2.199 ms
 
                             <li>Still evaluates in given order, but number at beginning specifies the minimum</li>
                             <li>Asynchronous standbys still possible at same time, just leave them out of list</li>
-                            <li>Version 10 added ability to desginate ANY listed replicas to create quorum. FIRST mode is old priority based method.</li>
+                            <li>Version 10 added ability to designate ANY listed replicas to create quorum. FIRST mode is old priority based method.</li>
                            <pre><code data-trim>
                             synchronous_standby_names = 'FIRST 2 (s1, s2, s3)'
                             synchronous_standby_names = 'ANY 2 (s1, s2, s3)'
@@ -1369,8 +1375,9 @@ CALL partman.partition_data_proc('public.mytable');
                                 <li>Primary key must include partition key</li>
                                 <li>Foreign keys FROM partition sets but not TO them</li>
                             </ul>
-                            <li>Added DEFAULT partition to catch data that doesn't fit into defined child</li>
+                            <li>Added DEFAULT partition</li>
                             <ul>
+                                <li>Catch data that doesn't fit into defined child</li>
                                 <li>Beware heavy performance penalty when adding children if default has a lot of data</li>
                             </ul>
                             <li>Improved SELECT performance using partition pruning methods. MUCH better in 12!</li>
@@ -1429,6 +1436,9 @@ CALL partman.partition_data_proc('public.mytable');
                             <li>ATTACH partition without locking entire partition set</li>
                             <li>Automatic (but overridable) inlining of common table expressions (CTEs)</li>
                             <li>Multi-column most-common-value (MCV) stats to improve upon new feature added in PG10</li>
+                            <ul>
+                                <li>See <a href="https://www.postgresql.org/docs/12/sql-createstatistics.html" target="_blank">CREATE STATISTICS</a> and related commands</li>
+                            </ul>
                         </ul>
                     </section>
 
@@ -1438,7 +1448,7 @@ CALL partman.partition_data_proc('public.mytable');
                             <li>Special columns whose values are always computed from other columns</li>
                             <li>Previously required triggers to accomplish this</li>
                             <li>Currently only "stored" generated column is supported. Computed when row is written and occupies storage like normal column</li>
-                            <li>Other known type, "virtal", is computed when column is read but not yet supported in PG</li>
+                            <li>Other known type, "virtual", is computed when column is read but not yet supported in PG</li>
                             <li>Additional caveats for usage in documentation - <a href="https://www.postgresql.org/docs/12/ddl-generated-columns.html" target="_blank">https://www.postgresql.org/docs/12/ddl-generated-columns.html</a></li>
                         </ul>
 
@@ -1466,6 +1476,7 @@ URL: https://www.postgresql.org/docs/12/sql-dropprocedure.html
                         <h2>Additional 12 Features</h2>
                         <ul>
                             <li>REINDEX CONCURRENTLY</li>
+                            <li>Foreign keys TO partitioned tables</li>
                             <li>Remove the special behavior of oid columns</li>
                             <li>Promote standby within database with new function <a href="https://www.postgresql.org/docs/12/functions-admin.html#FUNCTIONS-RECOVERY-CONTROL-TABLE" target="_blank">pg_promote()</a></li>
                             <li>VACUUM ... SKIP LOCKED</li>
@@ -1489,6 +1500,7 @@ URL: https://www.postgresql.org/docs/12/sql-dropprocedure.html
                         <h2>Upcoming 13 Features</h2>
                         <ul>
                             <li>?????????????</li>
+                            <li>See current <a href="https://commitfest.postgresql.org/25/" target="_blank">Commitfest 2019-11</a> for current development work</li>
                         </ul>
                     </section>
 
