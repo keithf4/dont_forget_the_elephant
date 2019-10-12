@@ -1325,6 +1325,7 @@ wal_level = logical
                             <li>Define extended statistics. See <a href="https://www.postgresql.org/docs/current/planner-stats.html#PLANNER-STATS-EXTENDED">Extended Statistics</a> section of docs</a>
                             <li>Improved query parallelism (still recommend going to latest major release if this is important)</li>
                             <ul>
+                                <li>Parallel feature now enabled by default <a href="https://www.postgresql.org/docs/10/runtime-config-resource.html#GUC-MAX-PARALLEL-WORKERS-PER-GATHER" target="_blank">max_parallel_workers_per_gather</a> set to 2</li>
                                 <li>btree index scans, bitmap heap scans, merge joins, non-correlated subqueries</li>
                                 <li>Added <a href="https://www.postgresql.org/docs/10/runtime-config-resource.html#GUC-MAX-PARALLEL-WORKERS" target="_blank">max_parallel_workers</a> to allow limiting worker processes dedicated to parallelism</li>
                             </ul>
