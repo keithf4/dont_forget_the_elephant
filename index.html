@@ -863,7 +863,7 @@ ORDER BY lower(cars.price_range);
                         <h2>Additional 9.2 Features</h2>
                         <ul>
                             <li>Index-Only scan</li>
-                            <li>JSON Data Type (limited)</li>
+                            <li>JSON Data Type (very limited usefulness)</li>
                         </ul>
                     </section>
                 </section>
@@ -912,7 +912,7 @@ its max_connections parameter (currently 12).
                     <section>
                         <h2>Additional 9.3 Features</h2>
                         <ul>
-                            <li>JSON Operators - Actually useful!</li>
+                            <li>JSON Operators - Almost useful!</li>
                             <li>LATERAL queries/joins</li>
                             <li>Writable Foreign Data Wrappers</li>
                             <li>An actual PostgreSQL FDW!</li>
@@ -933,7 +933,7 @@ its max_connections parameter (currently 12).
                     <section>
                         <h2>Binary JSON data type</h2>
                         <ul>
-                            <li>Even more useful! Possibly replace MongoDB.</li>
+                            <li>Actually useful! Possibly replace MongoDB.</li>
                             <ul>
                                 <li>Benchmark PG vs Mongo - <a href="https://github.com/EnterpriseDB/pg_nosql_benchmark" target="_blank">https://github.com/EnterpriseDB/pg_nosql_benchmark</a></li>
 
@@ -1066,10 +1066,10 @@ Execution time: 2.199 ms
                         <ul>
                             <li>Block Range Index / MinMax Index</li>
                             <li>Stores only the bounds-per-heap-page vs B-tree method of one index entry for each value</li>
-                            <li>Configure how many heap pages contribute to index entry</li>
                             <li>Significantly faster index creation, update &amp; smaller size</li>
                             <li>Sometimes slower index searches than B-tree</li>
                             <li>Works better with statically ordered data</li>
+                            <li>Configure how many heap pages contribute to index entry</li>
                             <li>Really good explanation &amp; examples at <a href="http://pythonsweetness.tumblr.com/post/119568339102/block-range-brin-indexes-in-postgresql-9-5" target="_blank">python sweetness blog</a></li>
 
                     </section>
